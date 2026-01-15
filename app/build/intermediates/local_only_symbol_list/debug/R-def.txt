@@ -1,0 +1,18 @@
+R_DEF: Internal format may change without notice
+local
+color accent
+color black
+color primary
+color primary_dark
+color white
+drawable background
+drawable logo
+id appIcon
+id appName
+id logoImageView
+id recyclerView
+layout activity_main
+layout item_app
+mipmap ic_launcher
+string app_name
+style Theme.CustomLauncher
