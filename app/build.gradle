@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.gvi.launcher'
+    namespace 'com.yourcompany.launcher'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.gvi.launcher"
+        applicationId "com.yourcompany.launcher"
         minSdk 23
         targetSdk 34
         versionCode 1
