@@ -1,31 +1,12 @@
-
-# Gradle files
 .gradle/
 gradle.zip
 gradle-*/
-!gradle/wrapper/gradle-wrapper.jar
-!gradle/wrapper/gradle-wrapper.properties
-
-# Build outputs
-/build/
-/app/build/
+build/
+app/build/
 *.apk
 *.aab
-app/build/outputs/
-app/build/intermediates/
-app/build/generated/
-
-# Local configuration
-*.iml
 .idea/
-.DS_Store
-
-# Gradle cache
-.gradle/caches/
-.gradle/daemon/
-.gradle/native/
-.gradle/wrapper/dists/
-
-# Android Studio
-*.keystore
+*.iml
 local.properties
+.DS_Store
+*.log
