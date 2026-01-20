@@ -2,27 +2,84 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="32dp">
+    android:padding="16dp"
+    android:background="@drawable/background">
 
-    <!-- Logo di bagian atas -->
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="40dp"
-        android:contentDescription="Logo"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logo" />
+    <!-- Top Bar Container -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="12dp">
 
-    <!-- RecyclerView untuk list aplikasi -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        <!-- Logo di kiri -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Logo"
+            android:src="@drawable/logo" />
+
+        <!-- Spacer untuk push ke kanan -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Info Bar di kanan (jam, wifi, dll) -->
+        <LinearLayout
+            android:id="@+id/infoBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- WiFi Icon (real status) -->
+            <TextView
+                android:id="@+id/wifiStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📶"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:paddingEnd="16dp" />
+
+            <!-- Jam + Date (real time) -->
+            <TextView
+                android:id="@+id/clockText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:00"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Wrapper untuk center grid dengan margin kanan-kiri -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/logoImageView"
-        android:clipToPadding="false"
-        android:padding="16dp" />
+        android:layout_below="@id/topBar"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp">
+
+        <!-- RecyclerView untuk list aplikasi di center -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:clipToPadding="false"
+            android:padding="16dp" />
+
+    </FrameLayout>
 
 </RelativeLayout>

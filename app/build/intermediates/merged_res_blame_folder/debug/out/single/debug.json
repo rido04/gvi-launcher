@@ -34,5 +34,9 @@
     {
         "merged": "com.example.customlauncher.app-merged_res-32:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-34:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-32:/layout_activity_home.xml.flat",
+        "source": "com.example.customlauncher.app-main-34:/layout/activity_home.xml"
     }
 ]

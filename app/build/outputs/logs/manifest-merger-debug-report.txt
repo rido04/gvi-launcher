@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-32:12
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-43:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\sandi\.gradle\caches\transforms-3\184958b59b0b0fbc0694ac3308e227ed\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\sandi\.gradle\caches\transforms-3\415b44dba470347148fe7836a27170ec\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\sandi\.gradle\caches\transforms-3\b40471635c2f8dda8e984f151e403694\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -35,8 +35,8 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.1] C:\Users\sandi\.gradle\
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1] C:\Users\sandi\.gradle\caches\transforms-3\d3d2766a774e73c5c9fbe1aadac85884\transformed\jetified-lifecycle-viewmodel-savedstate-2.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\sandi\.gradle\caches\transforms-3\1b2fde3857448ab53eadd8d0a2883838\transformed\jetified-core-ktx-1.12.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\sandi\.gradle\caches\transforms-3\f7556a78fadce4b97c6190a92e01d6e7\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\e21e013573ba165400a6887dc3f5c897\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\f47d16a6556e4855c9392813a19b75da\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\e21e013573ba165400a6887dc3f5c897\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\1e96b204fe1df1541c103ca139cecd1e\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\sandi\.gradle\caches\transforms-3\09a2cd8c134e62d6cf73fc6e22c05804\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\sandi\.gradle\caches\transforms-3\820e62f0b30c90bc6c88badac0db92dc\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
@@ -54,15 +54,21 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\sandi\.gradle\caches\transform
 		INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:2:11-69
-uses-permission#android.permission.QUERY_ALL_PACKAGES
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:5:5-6:38
-	android:minSdkVersion
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:6:9-35
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:4:5-79
 	android:name
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:5:22-74
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:4:22-76
+queries
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:6:5-10:15
+intent#action:name:android.intent.action.MAIN
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:7:9-9:18
+action#android.intent.action.MAIN
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:8:13-65
+	android:name
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:8:21-62
 application
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:8:5-30:19
-INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:8:5-30:19
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:12:5-41:19
+INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:12:5-41:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\sandi\.gradle\caches\transforms-3\184958b59b0b0fbc0694ac3308e227ed\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\sandi\.gradle\caches\transforms-3\184958b59b0b0fbc0694ac3308e227ed\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\sandi\.gradle\caches\transforms-3\415b44dba470347148fe7836a27170ec\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -84,43 +90,47 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\sandi\.gradle\cach
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] C:\Users\sandi\.gradle\caches\transforms-3\2ccd268e0ca2e1cd10ec650ac8067a3e\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:15:9-41
 	android:icon
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:10:9-43
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:14:9-43
 	android:allowBackup
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:9:9-35
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:13:9-52
-activity#com.example.customlauncher.MainActivity
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:15:9-28:20
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:17:9-52
+activity#com.example.customlauncher.HomeActivity
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:20:9-33:20
 	android:stateNotNeeded
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:19:13-42
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:24:13-42
 	android:launchMode
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:18:13-44
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:23:13-44
 	android:exported
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:22:13-36
 	android:name
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:21:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.HOME+category:name:android.intent.category.LAUNCHER
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:21:13-26:29
-action#android.intent.action.MAIN
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:22:17-69
-	android:name
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:22:25-66
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:26:13-31:29
 category#android.intent.category.HOME
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:23:17-73
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:28:17-73
 	android:name
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:23:27-70
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:28:27-70
 category#android.intent.category.DEFAULT
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:24:17-76
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:29:17-76
 	android:name
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:24:27-73
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:29:27-73
 category#android.intent.category.LAUNCHER
-ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:25:17-77
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:25:27-74
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:30:27-74
+activity#com.example.customlauncher.MainActivity
+ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:36:9-39:47
+	android:launchMode
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:39:13-44
+	android:exported
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:38:13-37
+	android:name
+		ADDED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml:37:13-41
 uses-sdk
 INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\work\gvi-launcher\app\src\main\AndroidManifest.xml
@@ -187,10 +197,10 @@ MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\sandi\.gradle\caches\transf
 MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\sandi\.gradle\caches\transforms-3\1b2fde3857448ab53eadd8d0a2883838\transformed\jetified-core-ktx-1.12.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\sandi\.gradle\caches\transforms-3\f7556a78fadce4b97c6190a92e01d6e7\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\sandi\.gradle\caches\transforms-3\f7556a78fadce4b97c6190a92e01d6e7\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\e21e013573ba165400a6887dc3f5c897\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\e21e013573ba165400a6887dc3f5c897\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\f47d16a6556e4855c9392813a19b75da\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\f47d16a6556e4855c9392813a19b75da\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\e21e013573ba165400a6887dc3f5c897\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\e21e013573ba165400a6887dc3f5c897\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\1e96b204fe1df1541c103ca139cecd1e\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\sandi\.gradle\caches\transforms-3\1e96b204fe1df1541c103ca139cecd1e\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\sandi\.gradle\caches\transforms-3\09a2cd8c134e62d6cf73fc6e22c05804\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41

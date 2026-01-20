@@ -8,10 +8,13 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="34" />
 
-    <!-- Hanya minta permission ini di Android 11+ -->
-    <uses-permission
-        android:name="android.permission.QUERY_ALL_PACKAGES"
-        android:minSdkVersion="30" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
 
     <permission
         android:name="com.example.customlauncher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -28,8 +31,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomLauncher" >
+
+        <!-- HOME ACTIVITY - LAUNCHER UTAMA -->
         <activity
-            android:name="com.example.customlauncher.MainActivity"
+            android:name="com.example.customlauncher.HomeActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:stateNotNeeded="true" >
@@ -41,6 +46,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MAIN ACTIVITY - LIST APPS -->
+        <activity
+            android:name="com.example.customlauncher.MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

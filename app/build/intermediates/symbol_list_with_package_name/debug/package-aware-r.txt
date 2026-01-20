@@ -3185,6 +3185,12 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id cardAllApps
+id cardApps
+id cardGames
+id cardMusic
+id cardSettings
+id cardVideo
 id carryVelocity
 id center
 id centerCrop
@@ -3201,6 +3207,7 @@ id circle_center
 id clear_text
 id clip_horizontal
 id clip_vertical
+id clockText
 id clockwise
 id closest
 id collapseActionView
@@ -3220,6 +3227,7 @@ id currentState
 id custom
 id customPanel
 id cut
+id dateText
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3278,6 +3286,7 @@ id fitXY
 id fixed
 id flip
 id floating
+id footerText
 id forever
 id fragment_container_view_tag
 id frost
@@ -3298,6 +3307,7 @@ id homeAsUp
 id honorRequest
 id horizontal_only
 id icon
+id iconContainer
 id icon_group
 id ifRoom
 id ignore
@@ -3307,6 +3317,7 @@ id immediateStop
 id included
 id indeterminate
 id info
+id infoBar
 id invisible
 id inward
 id is_pooling_container_tag
@@ -3545,11 +3556,13 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id time
+id timeText
 id title
 id titleDividerNoCustom
 id title_template
 id toggle
 id top
+id topBar
 id topPanel
 id touch_outside
 id transitionToEnd
@@ -3574,7 +3587,10 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id weatherIcon
 id west
+id wifiIcon
+id wifiStatus
 id withText
 id with_icon
 id withinBounds
@@ -3697,6 +3713,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_home
 layout activity_main
 layout custom_dialog
 layout design_bottom_navigation_item

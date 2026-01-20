@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Hanya minta permission ini di Android 11+ -->
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
-        android:minSdkVersion="30" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -12,8 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomLauncher">
         
+        <!-- HOME ACTIVITY - LAUNCHER UTAMA -->
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:stateNotNeeded="true">
@@ -26,6 +31,12 @@
             </intent-filter>
             
         </activity>
+
+        <!-- MAIN ACTIVITY - LIST APPS -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
         
     </application>
 
