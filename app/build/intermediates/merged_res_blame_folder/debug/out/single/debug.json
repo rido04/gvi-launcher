@@ -32,6 +32,10 @@
         "source": "com.example.customlauncher.app-main-34:/mipmap-mdpi/ic_launcher.png"
     },
     {
+        "merged": "com.example.customlauncher.app-merged_res-32:/drawable_logo_gvi_circle.png.flat",
+        "source": "com.example.customlauncher.app-main-34:/drawable/logo_gvi_circle.png"
+    },
+    {
         "merged": "com.example.customlauncher.app-merged_res-32:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-34:/mipmap-xhdpi/ic_launcher.png"
     },

@@ -3006,6 +3006,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
 drawable logo
+drawable logo_gvi_circle
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
 drawable m3_bottom_sheet_drag_handle
@@ -3187,6 +3188,7 @@ id callMeasure
 id cancel_button
 id cardAllApps
 id cardApps
+id cardExtra
 id cardGames
 id cardMusic
 id cardSettings
@@ -3589,7 +3591,6 @@ id visible
 id visible_removing_fragment_view_tag
 id weatherIcon
 id west
-id wifiIcon
 id wifiStatus
 id withText
 id with_icon

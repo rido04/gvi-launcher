@@ -1,9 +1,6 @@
 package com.example.customlauncher
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,7 +14,6 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var timeText: TextView
     private lateinit var dateText: TextView
-    private lateinit var wifiIcon: TextView
     private lateinit var weatherIcon: TextView
     private val handler = Handler(Looper.getMainLooper())
 
@@ -28,7 +24,6 @@ class HomeActivity : AppCompatActivity() {
         // Initialize views
         timeText = findViewById(R.id.timeText)
         dateText = findViewById(R.id.dateText)
-        wifiIcon = findViewById(R.id.wifiIcon)
         weatherIcon = findViewById(R.id.weatherIcon)
 
         // Setup card clicks
@@ -40,12 +35,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupCardClicks() {
         findViewById<CardView>(R.id.cardApps).setOnClickListener {
-            // Pindah ke MainActivity (list apps)
             startActivity(Intent(this, MainActivity::class.java))
         }
 
         findViewById<CardView>(R.id.cardAllApps).setOnClickListener {
-            // Pindah ke MainActivity (list apps)
             startActivity(Intent(this, MainActivity::class.java))
         }
 
@@ -61,8 +54,14 @@ class HomeActivity : AppCompatActivity() {
             // TODO: Buka Games category
         }
 
+        // SETTINGS - BUKA SETTINGS DEVICE
         findViewById<CardView>(R.id.cardSettings).setOnClickListener {
-            // TODO: Buka Settings
+            try {
+                val intent = Intent(android.provider.Settings.ACTION_SETTINGS)
+                startActivity(intent)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -78,11 +77,8 @@ class HomeActivity : AppCompatActivity() {
                     val dateFormat = SimpleDateFormat("EEE, MMM dd", Locale.getDefault())
                     dateText.text = dateFormat.format(Date())
 
-                    // Update WiFi status
-                    updateWifiStatus()
-
                     // Weather icon (static for now)
-                    weatherIcon.text = "☀️" // Bisa diganti: ☁️ 🌧️ ⛈️
+                    weatherIcon.text = "☀️"
 
                     handler.postDelayed(this, 1000)
                 } catch (e: Exception) {
@@ -90,22 +86,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-
-    private fun updateWifiStatus() {
-        try {
-            val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val network = connectivityManager.activeNetwork
-            val capabilities = connectivityManager.getNetworkCapabilities(network)
-
-            wifiIcon.text = when {
-                capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true -> "📶"
-                capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) == true -> "📱"
-                else -> "📵"
-            }
-        } catch (e: Exception) {
-            wifiIcon.text = "📶"
-        }
     }
 
     override fun onBackPressed() {

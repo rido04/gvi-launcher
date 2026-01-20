@@ -7,10 +7,12 @@ color primary_dark
 color white
 drawable background
 drawable logo
+drawable logo_gvi_circle
 id appIcon
 id appName
 id cardAllApps
 id cardApps
+id cardExtra
 id cardGames
 id cardMusic
 id cardSettings
@@ -25,7 +27,6 @@ id recyclerView
 id timeText
 id topBar
 id weatherIcon
-id wifiIcon
 id wifiStatus
 layout activity_home
 layout activity_main
