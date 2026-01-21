@@ -5,12 +5,16 @@ color black
 color primary
 color primary_dark
 color white
+drawable app
 drawable background
 drawable bg_moun1
 drawable bg_moun2
 drawable bg_moun3
 drawable card_selector
+drawable file
+drawable game
 drawable logo
+drawable setting
 id appIcon
 id appName
 id cardAllApps

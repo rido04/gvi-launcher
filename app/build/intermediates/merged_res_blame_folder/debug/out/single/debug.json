@@ -12,6 +12,10 @@
         "source": "com.example.customlauncher.app-main-36:/layout/item_app.xml"
     },
     {
+        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_app.png.flat",
+        "source": "com.example.customlauncher.app-main-36:/drawable/app.png"
+    },
+    {
         "merged": "com.example.customlauncher.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-36:/mipmap-xxxhdpi/ic_launcher.png"
     },
@@ -24,8 +28,16 @@
         "source": "com.example.customlauncher.app-main-36:/xml/network_security_config.xml"
     },
     {
+        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_game.png.flat",
+        "source": "com.example.customlauncher.app-main-36:/drawable/game.png"
+    },
+    {
         "merged": "com.example.customlauncher.app-merged_res-34:/drawable_card_selector.xml.flat",
         "source": "com.example.customlauncher.app-main-36:/drawable/card_selector.xml"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_setting.png.flat",
+        "source": "com.example.customlauncher.app-main-36:/drawable/setting.png"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/layout_activity_home_optimized.xml.flat",
@@ -62,5 +74,9 @@
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/mipmap-hdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-36:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_file.png.flat",
+        "source": "com.example.customlauncher.app-main-36:/drawable/file.png"
     }
 ]

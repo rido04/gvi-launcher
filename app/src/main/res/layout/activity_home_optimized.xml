@@ -55,26 +55,25 @@
             android:layout_gravity="center_vertical"
             android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:background="#25000000"
             android:paddingHorizontal="16dp"
             android:paddingVertical="10dp">
 
-            <!-- WiFi Icon - BIGGER SIZE -->
-            <ImageView
+            <TextView
                 android:id="@+id/wifiIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginEnd="12dp"
-                android:padding="4dp"
-                android:contentDescription="WiFi Status" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📶"
+                android:textSize="20sp"
+                android:paddingEnd="12dp" />
 
-            <!-- Weather Icon - BIGGER SIZE -->
-            <ImageView
+            <TextView
                 android:id="@+id/weatherIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginEnd="12dp"
-                android:padding="4dp"
-                android:contentDescription="Weather Status" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="☀️"
+                android:textSize="20sp"
+                android:paddingEnd="12dp" />
 
             <TextView
                 android:id="@+id/timeText"
@@ -227,7 +226,7 @@
 
         </LinearLayout>
 
-        <!-- ROW 2 - ALL OPTIMIZED -->
+        <!-- ROW 2 - ALL OPTIMIZED WITH CUSTOM ICONS -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -241,7 +240,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <!-- Games - OPTIMIZED -->
+                <!-- Games - WITH CUSTOM ICON -->
                 <FrameLayout
                     android:id="@+id/cardGames"
                     android:layout_width="0dp"
@@ -261,11 +260,11 @@
                         android:orientation="horizontal"
                         android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="🎮"
-                            android:textSize="32sp" />
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/game"
+                            android:contentDescription="Games Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -280,7 +279,7 @@
 
                 </FrameLayout>
 
-                <!-- Settings - OPTIMIZED -->
+                <!-- Settings - WITH CUSTOM ICON -->
                 <FrameLayout
                     android:id="@+id/cardSettings"
                     android:layout_width="0dp"
@@ -300,11 +299,11 @@
                         android:orientation="horizontal"
                         android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="⚙️"
-                            android:textSize="32sp" />
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/setting"
+                            android:contentDescription="Settings Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -327,7 +326,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <!-- All Apps - OPTIMIZED -->
+                <!-- All Apps - WITH CUSTOM ICON -->
                 <FrameLayout
                     android:id="@+id/cardAllApps"
                     android:layout_width="0dp"
@@ -347,11 +346,11 @@
                         android:orientation="horizontal"
                         android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="📦"
-                            android:textSize="32sp" />
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/app"
+                            android:contentDescription="All Apps Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -366,7 +365,7 @@
 
                 </FrameLayout>
 
-                <!-- File Manager - OPTIMIZED -->
+                <!-- File Manager - WITH CUSTOM ICON -->
                 <FrameLayout
                     android:id="@+id/cardExtra"
                     android:layout_width="0dp"
@@ -386,11 +385,11 @@
                         android:orientation="horizontal"
                         android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="📁"
-                            android:textSize="32sp" />
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/file"
+                            android:contentDescription="File Manager Icon" />
 
                         <TextView
                             android:layout_width="wrap_content"
