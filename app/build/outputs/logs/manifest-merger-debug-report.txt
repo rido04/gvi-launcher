@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-55:12
-INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-55:12
-INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-55:12
-INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-55:12
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-69:12
+INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:2:1-69:12
 MERGED from [com.google.android.material:material:1.11.0] C:\gradle-home\caches\transforms-3\184958b59b0b0fbc0694ac3308e227ed\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\gradle-home\caches\transforms-3\415b44dba470347148fe7836a27170ec\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [io.coil-kt:coil:2.5.0] C:\gradle-home\caches\transforms-3\4eb629476db0e15a067672fcab5e2b97\transformed\jetified-coil-2.5.0\AndroidManifest.xml:2:1-7:12
@@ -67,17 +67,21 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:5:5-67
 	android:name
 		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:5:22-64
-queries
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:8:5-12:15
-intent#action:name:android.intent.action.MAIN
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:9:9-11:18
-action#android.intent.action.MAIN
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:10:13-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:7:5-81
 	android:name
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:10:21-62
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:7:22-78
+queries
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:9:5-13:15
+intent#action:name:android.intent.action.MAIN
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:10:9-12:18
+action#android.intent.action.MAIN
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:11:13-65
+	android:name
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:11:21-62
 application
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:14:5-53:19
-INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:14:5-53:19
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:15:5-67:19
+INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:15:5-67:19
 MERGED from [com.google.android.material:material:1.11.0] C:\gradle-home\caches\transforms-3\184958b59b0b0fbc0694ac3308e227ed\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\gradle-home\caches\transforms-3\184958b59b0b0fbc0694ac3308e227ed\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\gradle-home\caches\transforms-3\415b44dba470347148fe7836a27170ec\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -99,63 +103,85 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\gradle-home\caches\trans
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] C:\gradle-home\caches\transforms-3\2ccd268e0ca2e1cd10ec650ac8067a3e\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:18:9-35
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:19:9-35
 	android:label
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:17:9-41
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:18:9-41
 	android:icon
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:16:9-43
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:17:9-43
 	android:allowBackup
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:16:9-35
 	android:theme
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:19:9-52
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:20:9-52
 	android:networkSecurityConfig
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:20:9-69
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:21:9-69
 	android:usesCleartextTraffic
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:21:9-45
-activity#com.example.customlauncher.SplashActivity
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:24:9-38:20
-	android:stateNotNeeded
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:28:13-42
-	android:launchMode
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:27:13-44
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:22:9-45
+receiver#com.example.customlauncher.BootReceiver
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:25:9-35:20
+	android:enabled
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:27:13-35
 	android:exported
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:26:13-36
-	android:theme
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:29:13-63
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:28:13-36
+	android:permission
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:29:13-75
 	android:name
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:25:13-43
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.HOME+category:name:android.intent.category.LAUNCHER
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:31:13-36:29
-category#android.intent.category.HOME
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:33:17-73
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:26:13-41
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.QUICKBOOT_POWERON+category:name:android.intent.category.DEFAULT
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:30:13-34:29
+	android:priority
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:30:28-50
+action#android.intent.action.BOOT_COMPLETED
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:31:17-79
 	android:name
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:33:27-70
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:31:25-76
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:32:17-82
+	android:name
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:32:25-79
 category#android.intent.category.DEFAULT
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:34:17-76
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:33:17-76
 	android:name
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:34:27-73
-category#android.intent.category.LAUNCHER
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:35:17-77
-	android:name
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:35:27-74
-activity#com.example.customlauncher.HomeActivity
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:41:9-45:45
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:33:27-73
+activity#com.example.customlauncher.SplashActivity
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:38:9-52:20
 	android:stateNotNeeded
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:45:13-42
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:42:13-42
 	android:launchMode
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:44:13-44
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:41:13-44
 	android:exported
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:43:13-37
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:40:13-36
+	android:theme
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:43:13-63
 	android:name
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:42:13-41
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:39:13-43
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.HOME+category:name:android.intent.category.LAUNCHER
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:45:13-50:29
+category#android.intent.category.HOME
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:47:17-73
+	android:name
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:47:27-70
+category#android.intent.category.LAUNCHER
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:49:17-77
+	android:name
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:49:27-74
+activity#com.example.customlauncher.HomeActivity
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:55:9-59:45
+	android:stateNotNeeded
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:59:13-42
+	android:launchMode
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:58:13-44
+	android:exported
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:57:13-37
+	android:name
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:56:13-41
 activity#com.example.customlauncher.MainActivity
-ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:48:9-51:47
+ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:62:9-65:47
 	android:launchMode
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:51:13-44
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:65:13-44
 	android:exported
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:50:13-37
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:64:13-37
 	android:name
-		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:49:13-41
+		ADDED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml:63:13-41
 uses-sdk
 INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\laragon\www\gvi-launcher\app\src\main\AndroidManifest.xml
