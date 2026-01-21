@@ -99,7 +99,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
-        // File Manager
+        // File Manager - SEARCH BY NAME
         findViewById<android.widget.FrameLayout>(R.id.cardExtra).setOnClickListener {
             launchFileManager()
         }
@@ -156,6 +156,72 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun launchFileManager() {
+        try {
+            val pm = packageManager
+            val intent = Intent(Intent.ACTION_MAIN, null).apply {
+                addCategory(Intent.CATEGORY_LAUNCHER)
+            }
+            val apps = pm.queryIntentActivities(intent, PackageManager.MATCH_ALL)
+            
+            // Cari app yang namanya mengandung "file", "manager", atau "files"
+            for (app in apps) {
+                val appName = app.loadLabel(pm).toString().lowercase()
+                val packageName = app.activityInfo.packageName.lowercase()
+                
+                // Skip Gallery app (biar gak kebuka gallery lagi!)
+                if (appName.contains("gallery") || packageName.contains("gallery")) {
+                    continue
+                }
+                
+                if (appName.contains("file") && appName.contains("manager") ||
+                    appName.contains("filemanager") ||
+                    appName.contains("files") && !appName.contains("google") ||
+                    packageName.contains("filemanager") ||
+                    packageName.contains("documentsui")) {
+                    
+                    android.util.Log.d("HomeActivity", "Found File Manager: $appName (${app.activityInfo.packageName})")
+                    
+                    val launchIntent = pm.getLaunchIntentForPackage(app.activityInfo.packageName)
+                    if (launchIntent != null) {
+                        startActivity(launchIntent)
+                        return
+                    }
+                }
+            }
+            
+            // Fallback: Coba package name langsung
+            val fileManagerPackages = listOf(
+                "com.android.documentsui",
+                "com.google.android.documentsui",
+                "com.mi.android.globalFileexplorer"
+            )
+            
+            for (pkg in fileManagerPackages) {
+                try {
+                    val launchIntent = pm.getLaunchIntentForPackage(pkg)
+                    if (launchIntent != null) {
+                        android.util.Log.d("HomeActivity", "Launching file manager: $pkg")
+                        startActivity(launchIntent)
+                        return
+                    }
+                } catch (e: Exception) {
+                    continue
+                }
+            }
+            
+            // Final fallback: Intent picker
+            android.util.Log.w("HomeActivity", "No file manager found, showing chooser")
+            val chooserIntent = Intent(Intent.ACTION_GET_CONTENT).apply {
+                type = "*/*"
+            }
+            startActivity(Intent.createChooser(chooserIntent, "Select File Manager"))
+            
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
     private fun launchApp(packageName: String, fallbackUrl: String) {
         try {
             val intent = packageManager.getLaunchIntentForPackage(packageName)
@@ -165,36 +231,6 @@ class HomeActivity : AppCompatActivity() {
                 val webIntent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(fallbackUrl))
                 startActivity(webIntent)
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun launchFileManager() {
-        try {
-            val fileManagers = listOf(
-                "com.android.documentsui",
-                "com.google.android.documentsui",
-                "com.mi.android.globalFileexplorer"
-            )
-            
-            for (pkg in fileManagers) {
-                try {
-                    val intent = packageManager.getLaunchIntentForPackage(pkg)
-                    if (intent != null) {
-                        startActivity(intent)
-                        return
-                    }
-                } catch (e: Exception) {
-                    continue
-                }
-            }
-            
-            // Fallback
-            val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-                type = "*/*"
-            }
-            startActivity(Intent.createChooser(intent, "Select File Manager"))
         } catch (e: Exception) {
             e.printStackTrace()
         }
