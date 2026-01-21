@@ -9,6 +9,7 @@ drawable background
 drawable bg_moun1
 drawable bg_moun2
 drawable bg_moun3
+drawable card_selector
 drawable logo
 id appIcon
 id appName
@@ -31,10 +32,10 @@ id topBar
 id weatherIcon
 id wifiIcon
 id wifiStatus
-layout activity_home
+layout activity_home_
+layout activity_home_optimized
 layout activity_main
 layout item_app
 mipmap ic_launcher
-raw logo_gvi
 string app_name
 style Theme.CustomLauncher

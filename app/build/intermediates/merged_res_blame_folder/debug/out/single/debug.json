@@ -1,7 +1,7 @@
 [
     {
-        "merged": "com.example.customlauncher.app-merged_res-32:/raw_logo_gvi.mp4.flat",
-        "source": "com.example.customlauncher.app-main-34:/raw/logo_gvi.mp4"
+        "merged": "com.example.customlauncher.app-merged_res-32:/drawable_card_selector.xml.flat",
+        "source": "com.example.customlauncher.app-main-34:/drawable/card_selector.xml"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-32:/drawable_bg_moun2.jpg.flat",
@@ -12,8 +12,8 @@
         "source": "com.example.customlauncher.app-main-34:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.customlauncher.app-merged_res-32:/layout_activity_home.xml.flat",
-        "source": "com.example.customlauncher.app-main-34:/layout/activity_home.xml"
+        "merged": "com.example.customlauncher.app-merged_res-32:/layout_activity_home_optimized.xml.flat",
+        "source": "com.example.customlauncher.app-main-34:/layout/activity_home_optimized.xml"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-32:/drawable_background.png.flat",
@@ -54,5 +54,9 @@
     {
         "merged": "com.example.customlauncher.app-merged_res-32:/mipmap-mdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-34:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-32:/layout_activity_home_.xml.flat",
+        "source": "com.example.customlauncher.app-main-34:/layout/activity_home_.xml"
     }
 ]

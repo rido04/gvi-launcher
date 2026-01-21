@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var wifiStatus: TextView
     private val appList = mutableListOf<AppInfo>()
     private val handler = Handler(Looper.getMainLooper())
+    
+    // Coroutine scope untuk background loading
+    private val mainScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,25 +31,45 @@ class MainActivity : AppCompatActivity() {
         try {
             setContentView(R.layout.activity_main)
 
-            recyclerView = findViewById(R.id.recyclerView)
             clockText = findViewById(R.id.clockText)
             wifiStatus = findViewById(R.id.wifiStatus)
+            recyclerView = findViewById(R.id.recyclerView)
 
-            recyclerView.layoutManager = GridLayoutManager(this, 5)
+            // Setup RecyclerView dengan optimasi
+            setupRecyclerView()
 
-            loadInstalledApps()
+            // Load apps di background thread
+            loadInstalledAppsAsync()
 
-            appAdapter = AppAdapter(appList) { appInfo ->
-                launchApp(appInfo.packageName)
-            }
-            recyclerView.adapter = appAdapter
-
-            // Start clock update (tanpa WiFi status dulu)
+            // Start clock update
             updateClock()
             
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+    
+    private fun setupRecyclerView() {
+        // GridLayoutManager dengan optimasi
+        val layoutManager = GridLayoutManager(this, 5).apply {
+            // Recycle views yang scroll out of bounds
+            recycleChildrenOnDetach = true
+        }
+        recyclerView.layoutManager = layoutManager
+        
+        // Optimasi RecyclerView
+        recyclerView.apply {
+            setHasFixedSize(true)  // Ukuran item fixed, performa lebih baik
+            setItemViewCacheSize(20)  // Cache 20 items
+            isDrawingCacheEnabled = true
+            drawingCacheQuality = android.view.View.DRAWING_CACHE_QUALITY_HIGH
+        }
+        
+        // Initialize adapter kosong dulu
+        appAdapter = AppAdapter(appList) { appInfo ->
+            launchApp(appInfo.packageName)
+        }
+        recyclerView.adapter = appAdapter
     }
 
     private fun updateClock() {
@@ -55,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                     val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
                     clockText.text = sdf.format(Date())
                     
-                    // Static WiFi icon dulu
+                    // Static WiFi icon
                     wifiStatus.text = "📶"
                     
                     handler.postDelayed(this, 1000)
@@ -66,29 +90,43 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun loadInstalledApps() {
-        try {
-            val pm = packageManager
-            val intent = Intent(Intent.ACTION_MAIN, null).apply {
-                addCategory(Intent.CATEGORY_LAUNCHER)
+    private fun loadInstalledAppsAsync() {
+        // Load apps di background thread agar tidak freeze UI
+        mainScope.launch(Dispatchers.IO) {
+            try {
+                val pm = packageManager
+                val intent = Intent(Intent.ACTION_MAIN, null).apply {
+                    addCategory(Intent.CATEGORY_LAUNCHER)
+                }
+
+                val apps = pm.queryIntentActivities(intent, PackageManager.MATCH_ALL)
+                val tempList = mutableListOf<AppInfo>()
+
+                for (app in apps) {
+                    // Skip launcher sendiri
+                    if (app.activityInfo.packageName == packageName) continue
+
+                    val appInfo = AppInfo(
+                        label = app.loadLabel(pm).toString(),
+                        packageName = app.activityInfo.packageName,
+                        icon = app.loadIcon(pm)
+                    )
+                    tempList.add(appInfo)
+                }
+
+                // Sort di background
+                tempList.sortBy { it.label.lowercase() }
+                
+                // Update UI di main thread
+                withContext(Dispatchers.Main) {
+                    appList.clear()
+                    appList.addAll(tempList)
+                    appAdapter.notifyDataSetChanged()
+                }
+                
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-
-            val apps = pm.queryIntentActivities(intent, PackageManager.MATCH_ALL)
-
-            for (app in apps) {
-                if (app.activityInfo.packageName == packageName) continue
-
-                val appInfo = AppInfo(
-                    label = app.loadLabel(pm).toString(),
-                    packageName = app.activityInfo.packageName,
-                    icon = app.loadIcon(pm)
-                )
-                appList.add(appInfo)
-            }
-
-            appList.sortBy { it.label.lowercase() }
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 
@@ -104,12 +142,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        // Disable back button
+        // Back ke HomeActivity
         finish()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacksAndMessages(null)
+        mainScope.cancel()  // Cancel coroutines
     }
 }
