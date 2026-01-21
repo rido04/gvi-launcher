@@ -2,13 +2,19 @@ package com.example.customlauncher
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlinx.coroutines.*
@@ -18,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var appAdapter: AppAdapter
     private lateinit var clockText: TextView
-    private lateinit var wifiStatus: TextView
+    private lateinit var wifiIcon: ImageView  // GANTI dari wifiStatus: TextView
+    private lateinit var imageLoader: ImageLoader  // TAMBAH ini
     private val appList = mutableListOf<AppInfo>()
     private val handler = Handler(Looper.getMainLooper())
     
@@ -31,8 +38,15 @@ class MainActivity : AppCompatActivity() {
         try {
             setContentView(R.layout.activity_main)
 
+            // Initialize Coil ImageLoader with SVG support
+            imageLoader = ImageLoader.Builder(this)
+                .components {
+                    add(SvgDecoder.Factory())
+                }
+                .build()
+
             clockText = findViewById(R.id.clockText)
-            wifiStatus = findViewById(R.id.wifiStatus)
+            wifiIcon = findViewById(R.id.wifiIcon)  // GANTI dari wifiStatus
             recyclerView = findViewById(R.id.recyclerView)
 
             // Setup RecyclerView dengan optimasi
@@ -41,12 +55,33 @@ class MainActivity : AppCompatActivity() {
             // Load apps di background thread
             loadInstalledAppsAsync()
 
+            // Load WiFi icon after view is ready
+            wifiIcon.post {
+                loadWifiIcon()
+            }
+
             // Start clock update
             updateClock()
             
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+    
+    private fun loadWifiIcon() {
+        val wifiUrl = "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/wifi.svg"
+        
+        val request = ImageRequest.Builder(this)
+            .data(wifiUrl)
+            .target(
+                onSuccess = { result ->
+                    wifiIcon.setImageDrawable(result)
+                    wifiIcon.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
+                }
+            )
+            .build()
+        
+        imageLoader.enqueue(request)
     }
     
     private fun setupRecyclerView() {
@@ -79,8 +114,7 @@ class MainActivity : AppCompatActivity() {
                     val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
                     clockText.text = sdf.format(Date())
                     
-                    // Static WiFi icon
-                    wifiStatus.text = "📶"
+                    // WiFi icon sudah di-load dari loadWifiIcon(), tidak perlu update lagi
                     
                     handler.postDelayed(this, 1000)
                 } catch (e: Exception) {

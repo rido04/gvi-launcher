@@ -3598,7 +3598,6 @@ id visible_removing_fragment_view_tag
 id weatherIcon
 id west
 id wifiIcon
-id wifiStatus
 id withText
 id with_icon
 id withinBounds

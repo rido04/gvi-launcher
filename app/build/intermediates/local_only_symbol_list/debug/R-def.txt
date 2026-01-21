@@ -31,7 +31,6 @@ id timeText
 id topBar
 id weatherIcon
 id wifiIcon
-id wifiStatus
 layout activity_home_
 layout activity_home_optimized
 layout activity_main

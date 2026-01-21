@@ -40,15 +40,15 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <!-- WiFi Icon (real status) -->
-            <TextView
-                android:id="@+id/wifiStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📶"
-                android:textSize="24sp"
-                android:textColor="@color/white"
-                android:paddingEnd="16dp" />
+            <!-- WiFi Icon (SVG from URL) -->
+            <ImageView
+                android:id="@+id/wifiIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="16dp"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="WiFi Status" />
 
             <!-- Jam + Date (real time) -->
             <TextView

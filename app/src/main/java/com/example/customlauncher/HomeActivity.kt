@@ -215,29 +215,65 @@ class HomeActivity : AppCompatActivity() {
     private fun updateWeatherIcon() {
         try {
             val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+            android.util.Log.d("HomeActivity", "Current hour: $hour")
             
+            // URL yang BENAR untuk Tabler Icons
             val (iconUrl, color) = when {
                 hour in 6..11 -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sunrise.svg",
-                    Color.parseColor("#FDB813")
+                    Color.parseColor("#FDB813") // Orange sunrise
                 )
                 hour in 12..17 -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sun.svg",
-                    Color.parseColor("#FDB813")
+                    Color.parseColor("#FDB813") // Yellow sun
                 )
                 hour in 18..19 -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sunset.svg",
-                    Color.parseColor("#FF6B6B")
+                    Color.parseColor("#FF6B6B") // Red sunset
                 )
                 else -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/moon.svg",
-                    Color.parseColor("#A8DADC")
+                    Color.parseColor("#A8DADC") // Light blue moon
                 )
             }
             
-            // sama seperti loadWifiIcon(), ganti URL
+            android.util.Log.d("HomeActivity", "Loading weather icon from: $iconUrl")
+            
+            val request = ImageRequest.Builder(this)
+                .data(iconUrl)
+                .listener(
+                    onStart = {
+                        android.util.Log.d("HomeActivity", "Weather icon loading started")
+                    },
+                    onSuccess = { _, result ->
+                        android.util.Log.d("HomeActivity", "Weather icon loaded successfully")
+                    },
+                    onError = { _, error ->
+                        android.util.Log.e("HomeActivity", "Weather icon load failed: ${error.throwable.message}", error.throwable)
+                    }
+                )
+                .target(
+                    onStart = {
+                        weatherIcon.setBackgroundColor(Color.RED) // Debug: red = loading
+                    },
+                    onSuccess = { result ->
+                        android.util.Log.d("HomeActivity", "Setting weather icon drawable")
+                        weatherIcon.setImageDrawable(result)
+                        weatherIcon.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                        weatherIcon.setBackgroundColor(Color.TRANSPARENT)
+                        android.util.Log.d("HomeActivity", "Weather icon set with color: $color")
+                    },
+                    onError = {
+                        android.util.Log.e("HomeActivity", "Weather icon target error")
+                        weatherIcon.setBackgroundColor(Color.YELLOW) // Debug: yellow = error
+                    }
+                )
+                .build()
+            
+            imageLoader.enqueue(request)
             
         } catch (e: Exception) {
+            android.util.Log.e("HomeActivity", "Weather icon exception", e)
             e.printStackTrace()
         }
     }
