@@ -1,11 +1,17 @@
 package com.example.customlauncher
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -13,8 +19,9 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var timeText: TextView
     private lateinit var dateText: TextView
-    private lateinit var weatherIcon: TextView
-    private lateinit var wifiIcon: TextView
+    private lateinit var weatherIcon: ImageView
+    private lateinit var wifiIcon: ImageView
+    private lateinit var imageLoader: ImageLoader
     private val handler = Handler(Looper.getMainLooper())
     
     // Cache Intent
@@ -31,6 +38,13 @@ class HomeActivity : AppCompatActivity() {
         
         setContentView(R.layout.activity_home_optimized)
 
+        // Initialize Coil ImageLoader with SVG support
+        imageLoader = ImageLoader.Builder(this)
+            .components {
+                add(SvgDecoder.Factory())
+            }
+            .build()
+
         // Initialize views
         timeText = findViewById(R.id.timeText)
         dateText = findViewById(R.id.dateText)
@@ -39,6 +53,11 @@ class HomeActivity : AppCompatActivity() {
 
         // Setup cards
         setupCardClicks()
+
+        // Load WiFi icon after view is ready
+        wifiIcon.post {
+            loadWifiIcon()
+        }
 
         // Clock update
         updateClockAndStatus()
@@ -156,6 +175,32 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun loadWifiIcon() {
+        // WiFi icon - White color
+        val wifiUrl = "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/wifi.svg"
+        
+        val request = ImageRequest.Builder(this)
+            .data(wifiUrl)
+            .target(
+                onStart = {
+                    // Show placeholder while loading
+                    wifiIcon.setBackgroundColor(Color.RED) // Debug: show red background
+                },
+                onSuccess = { result ->
+                    wifiIcon.setImageDrawable(result)
+                    wifiIcon.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
+                    wifiIcon.setBackgroundColor(Color.TRANSPARENT)
+                },
+                onError = {
+                    // Show error icon (emoji fallback)
+                    wifiIcon.setBackgroundColor(Color.YELLOW) // Debug: show yellow background
+                }
+            )
+            .build()
+        
+        imageLoader.enqueue(request)
+    }
+
     private fun updateClockAndStatus() {
         handler.post(object : Runnable {
             override fun run() {
@@ -179,14 +224,50 @@ class HomeActivity : AppCompatActivity() {
     private fun updateWeatherIcon() {
         try {
             val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-            weatherIcon.text = when {
-                hour in 6..11 -> "🌅"
-                hour in 12..17 -> "☀️"
-                hour in 18..19 -> "🌇"
-                else -> "🌙"
+            
+            // Choose icon and color based on time of day
+            val (iconUrl, color) = when {
+                hour in 6..11 -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/sunrise.svg",
+                    Color.parseColor("#FDB813") // Orange sunrise
+                )
+                hour in 12..17 -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/sun.svg",
+                    Color.parseColor("#FDB813") // Yellow sun
+                )
+                hour in 18..19 -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/sunset.svg",
+                    Color.parseColor("#FF6B6B") // Red sunset
+                )
+                else -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/moon.svg",
+                    Color.parseColor("#A8DADC") // Light blue moon
+                )
             }
+            
+            val request = ImageRequest.Builder(this)
+                .data(iconUrl)
+                .target(
+                    onStart = {
+                        // Show placeholder while loading
+                        weatherIcon.setBackgroundColor(Color.RED) // Debug: show red background
+                    },
+                    onSuccess = { result ->
+                        weatherIcon.setImageDrawable(result)
+                        weatherIcon.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                        weatherIcon.setBackgroundColor(Color.TRANSPARENT)
+                    },
+                    onError = {
+                        // Show error icon
+                        weatherIcon.setBackgroundColor(Color.YELLOW) // Debug: show yellow background
+                    }
+                )
+                .build()
+            
+            imageLoader.enqueue(request)
+            
         } catch (e: Exception) {
-            weatherIcon.text = "☀️"
+            e.printStackTrace()
         }
     }
 
