@@ -1,6 +1,7 @@
 package com.example.customlauncher
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -64,7 +65,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupCardClicks() {
-        // GVI App
+        // GVI App - CARI BERDASARKAN NAMA
         findViewById<android.widget.FrameLayout>(R.id.cardApps).setOnClickListener {
             launchGVIApp()
         }
@@ -79,9 +80,9 @@ class HomeActivity : AppCompatActivity() {
             launchApp("com.android.chrome", "https://www.google.com")
         }
 
-        // Games
+        // Play Store
         findViewById<android.widget.FrameLayout>(R.id.cardGames).setOnClickListener {
-            // TODO: Launch games
+            launchPlayStore()
         }
 
         // Settings
@@ -101,6 +102,57 @@ class HomeActivity : AppCompatActivity() {
         // File Manager
         findViewById<android.widget.FrameLayout>(R.id.cardExtra).setOnClickListener {
             launchFileManager()
+        }
+    }
+
+    private fun launchPlayStore() {
+        try {
+            val intent = packageManager.getLaunchIntentForPackage("com.android.vending")
+            if (intent != null) {
+                startActivity(intent)
+            } else {
+                val webIntent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store"))
+                startActivity(webIntent)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun launchGVIApp() {
+        try {
+            val pm = packageManager
+            val intent = Intent(Intent.ACTION_MAIN, null).apply {
+                addCategory(Intent.CATEGORY_LAUNCHER)
+            }
+            val apps = pm.queryIntentActivities(intent, PackageManager.MATCH_ALL)
+            
+            // Cari app yang namanya mengandung "gvi", "signage", atau "digital"
+            for (app in apps) {
+                val appName = app.loadLabel(pm).toString().lowercase()
+                
+                if (appName.contains("gvi") || 
+                    appName.contains("signage") || 
+                    appName.contains("digital smart")) {
+                    
+                    android.util.Log.d("HomeActivity", "Found GVI app: $appName (${app.activityInfo.packageName})")
+                    
+                    val launchIntent = pm.getLaunchIntentForPackage(app.activityInfo.packageName)
+                    if (launchIntent != null) {
+                        startActivity(launchIntent)
+                        return
+                    }
+                }
+            }
+            
+            // Kalo gak ketemu, buka All Apps
+            android.util.Log.w("HomeActivity", "GVI app not found, opening All Apps")
+            startActivity(Intent(this, MainActivity::class.java))
+            
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // Fallback: buka All Apps
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
@@ -148,63 +200,15 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun launchGVIApp() {
-        try {
-            val packageNames = listOf(
-                "com.gvi.smartsignage",
-                "com.gvi.digitalsignage",
-                "com.globalvision.intermedia"
-            )
-
-            for (packageName in packageNames) {
-                try {
-                    val intent = packageManager.getLaunchIntentForPackage(packageName)
-                    if (intent != null) {
-                        startActivity(intent)
-                        return
-                    }
-                } catch (e: Exception) {
-                    continue
-                }
-            }
-
-            // Fallback ke All Apps
-            startActivity(Intent(this, MainActivity::class.java))
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
     private fun loadWifiIcon() {
-        android.util.Log.d("HomeActivity", "Loading WiFi icon...")
-        
-        // URL BARU yang benar
         val wifiUrl = "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/wifi.svg"
         
         val request = ImageRequest.Builder(this)
             .data(wifiUrl)
-            .listener(
-                onStart = {
-                    android.util.Log.d("HomeActivity", "WiFi icon loading started")
-                },
-                onSuccess = { _, result ->
-                    android.util.Log.d("HomeActivity", "WiFi icon loaded successfully")
-                },
-                onError = { _, error ->
-                    android.util.Log.e("HomeActivity", "WiFi icon load failed: ${error.throwable.message}", error.throwable)
-                }
-            )
             .target(
-                onStart = {
-                    wifiIcon.setBackgroundColor(Color.RED)
-                },
                 onSuccess = { result ->
                     wifiIcon.setImageDrawable(result)
                     wifiIcon.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
-                    wifiIcon.setBackgroundColor(Color.TRANSPARENT)
-                },
-                onError = {
-                    wifiIcon.setBackgroundColor(Color.YELLOW)
                 }
             )
             .build()
@@ -215,57 +219,32 @@ class HomeActivity : AppCompatActivity() {
     private fun updateWeatherIcon() {
         try {
             val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-            android.util.Log.d("HomeActivity", "Current hour: $hour")
             
-            // URL yang BENAR untuk Tabler Icons
             val (iconUrl, color) = when {
                 hour in 6..11 -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sunrise.svg",
-                    Color.parseColor("#FDB813") // Orange sunrise
+                    Color.parseColor("#FDB813")
                 )
                 hour in 12..17 -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sun.svg",
-                    Color.parseColor("#FDB813") // Yellow sun
+                    Color.parseColor("#FDB813")
                 )
                 hour in 18..19 -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sunset.svg",
-                    Color.parseColor("#FF6B6B") // Red sunset
+                    Color.parseColor("#FF6B6B")
                 )
                 else -> Pair(
                     "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/moon.svg",
-                    Color.parseColor("#A8DADC") // Light blue moon
+                    Color.parseColor("#A8DADC")
                 )
             }
             
-            android.util.Log.d("HomeActivity", "Loading weather icon from: $iconUrl")
-            
             val request = ImageRequest.Builder(this)
                 .data(iconUrl)
-                .listener(
-                    onStart = {
-                        android.util.Log.d("HomeActivity", "Weather icon loading started")
-                    },
-                    onSuccess = { _, result ->
-                        android.util.Log.d("HomeActivity", "Weather icon loaded successfully")
-                    },
-                    onError = { _, error ->
-                        android.util.Log.e("HomeActivity", "Weather icon load failed: ${error.throwable.message}", error.throwable)
-                    }
-                )
                 .target(
-                    onStart = {
-                        weatherIcon.setBackgroundColor(Color.RED) // Debug: red = loading
-                    },
                     onSuccess = { result ->
-                        android.util.Log.d("HomeActivity", "Setting weather icon drawable")
                         weatherIcon.setImageDrawable(result)
                         weatherIcon.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-                        weatherIcon.setBackgroundColor(Color.TRANSPARENT)
-                        android.util.Log.d("HomeActivity", "Weather icon set with color: $color")
-                    },
-                    onError = {
-                        android.util.Log.e("HomeActivity", "Weather icon target error")
-                        weatherIcon.setBackgroundColor(Color.YELLOW) // Debug: yellow = error
                     }
                 )
                 .build()
@@ -273,7 +252,6 @@ class HomeActivity : AppCompatActivity() {
             imageLoader.enqueue(request)
             
         } catch (e: Exception) {
-            android.util.Log.e("HomeActivity", "Weather icon exception", e)
             e.printStackTrace()
         }
     }
