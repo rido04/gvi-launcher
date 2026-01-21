@@ -2974,6 +2974,9 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable background
+drawable bg_moun1
+drawable bg_moun2
+drawable bg_moun3
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3006,7 +3009,6 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
 drawable logo
-drawable logo_gvi_circle
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
 drawable m3_bottom_sheet_drag_handle
@@ -3591,6 +3593,7 @@ id visible
 id visible_removing_fragment_view_tag
 id weatherIcon
 id west
+id wifiIcon
 id wifiStatus
 id withText
 id with_icon
@@ -3798,6 +3801,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 plurals mtrl_badge_content_description
+raw logo_gvi
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

@@ -1,11 +1,35 @@
 [
     {
+        "merged": "com.example.customlauncher.app-merged_res-32:/raw_logo_gvi.mp4.flat",
+        "source": "com.example.customlauncher.app-main-34:/raw/logo_gvi.mp4"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-32:/drawable_bg_moun2.jpg.flat",
+        "source": "com.example.customlauncher.app-main-34:/drawable/bg_moun2.jpg"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-32:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.customlauncher.app-main-34:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-32:/layout_activity_home.xml.flat",
+        "source": "com.example.customlauncher.app-main-34:/layout/activity_home.xml"
+    },
+    {
         "merged": "com.example.customlauncher.app-merged_res-32:/drawable_background.png.flat",
         "source": "com.example.customlauncher.app-main-34:/drawable/background.png"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-32:/mipmap-hdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-34:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-32:/drawable_bg_moun1.jpg.flat",
+        "source": "com.example.customlauncher.app-main-34:/drawable/bg_moun1.jpg"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-32:/drawable_bg_moun3.jpg.flat",
+        "source": "com.example.customlauncher.app-main-34:/drawable/bg_moun3.jpg"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-32:/layout_activity_main.xml.flat",
@@ -30,17 +54,5 @@
     {
         "merged": "com.example.customlauncher.app-merged_res-32:/mipmap-mdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-34:/mipmap-mdpi/ic_launcher.png"
-    },
-    {
-        "merged": "com.example.customlauncher.app-merged_res-32:/drawable_logo_gvi_circle.png.flat",
-        "source": "com.example.customlauncher.app-main-34:/drawable/logo_gvi_circle.png"
-    },
-    {
-        "merged": "com.example.customlauncher.app-merged_res-32:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.example.customlauncher.app-main-34:/mipmap-xhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "com.example.customlauncher.app-merged_res-32:/layout_activity_home.xml.flat",
-        "source": "com.example.customlauncher.app-main-34:/layout/activity_home.xml"
     }
 ]

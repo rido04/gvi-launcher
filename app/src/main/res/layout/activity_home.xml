@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
+    android:paddingHorizontal="60dp"
+    android:paddingVertical="30dp"
     android:background="@drawable/background">
 
     <!-- Top Bar -->
@@ -14,9 +15,9 @@
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingVertical="12dp">
+        android:paddingVertical="8dp">
 
-        <!-- Logo GVI (Lebih Kecil Lagi) -->
+        <!-- Logo GVI -->
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="80dp"
@@ -36,7 +37,7 @@
             android:id="@+id/dateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tue, Jan 20"
+            android:text="Tuesday, January 20"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -48,7 +49,7 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
 
-        <!-- Status Icons Kanan (Kecil) -->
+        <!-- Status Icons Kanan -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +59,14 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="10dp">
 
-            <!-- Weather -->
+            <TextView
+                android:id="@+id/wifiIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📶"
+                android:textSize="20sp"
+                android:paddingEnd="12dp" />
+
             <TextView
                 android:id="@+id/weatherIcon"
                 android:layout_width="wrap_content"
@@ -67,12 +75,11 @@
                 android:textSize="20sp"
                 android:paddingEnd="12dp" />
 
-            <!-- Time -->
             <TextView
                 android:id="@+id/timeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="11:28"
+                android:text="15:28"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -81,165 +88,167 @@
 
     </LinearLayout>
 
-    <!-- Footer Text -->
-    <TextView
-        android:id="@+id/footerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Global Vision Intermedia"
-        android:textSize="18sp"
-        android:textColor="#70FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
-
-    <!-- Main Grid Content (TANPA SCROLL) -->
+    <!-- Main Grid Content (TANPA FOOTER DI BAWAHNYA) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topBar"
-        android:layout_above="@id/footerText"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="60dp"
         android:orientation="vertical"
         android:gravity="center_vertical">
 
-        <!-- ROW 1: Kiri (1 besar) | Kanan (2 medium HORIZONTAL) - LEBIH BESAR -->
+        <!-- ROW 1: Height 4.3x (LEBIH TINGGI LAGI) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="4.3"
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <!-- KIRI: 1 Card BESAR (GVI) - PAKAI LOGO IMAGE -->
+            <!-- KIRI: GVI Card (SAMA KAYAK YOUTUBE & CHROME) -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardApps"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="4dp"
+                android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="#0078D7"
                 app:cardCornerRadius="0dp"
                 app:cardElevation="0dp">
 
-                <LinearLayout
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="24dp">
+                    android:layout_height="match_parent">
 
-                    <!-- GANTI EMOJI JADI IMAGE -->
                     <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:scaleType="fitCenter"
-                        android:contentDescription="GVI Logo"
-                        android:src="@drawable/logo_gvi_circle" />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bg_moun3" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#40000000" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="GVI Smart\nSignage System"
-                        android:textSize="16sp"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="24dp"
+                        android:text="GVI Smart Signage Integrated System"
+                        android:textSize="20sp"
                         android:textColor="#FFFFFF"
-                        android:textStyle="normal"
-                        android:gravity="center"
-                        android:layout_marginTop="16dp" />
+                        android:textStyle="bold"
+                        android:shadowColor="#000000"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="4"
+                        android:gravity="center" />
 
-                </LinearLayout>
+                </FrameLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <!-- KANAN: 2 Cards Medium HORIZONTAL (Music, Video) - FLAT DESIGN -->
+            <!-- KANAN: YouTube + Chrome -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <!-- Music - FLAT RED -->
+                <!-- YouTube -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardMusic"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="#E74C3C"
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp">
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/bg_moun1" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#40000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="🎵"
-                            android:textSize="56sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Music"
-                            android:textSize="14sp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="24dp"
+                            android:text="YouTube"
+                            android:textSize="20sp"
                             android:textColor="#FFFFFF"
-                            android:textStyle="normal"
-                            android:layout_marginTop="12dp" />
+                            android:textStyle="bold"
+                            android:shadowColor="#000000"
+                            android:shadowDx="2"
+                            android:shadowDy="2"
+                            android:shadowRadius="4" />
 
-                    </LinearLayout>
+                    </FrameLayout>
 
                 </androidx.cardview.widget.CardView>
 
-                <!-- Video - FLAT PURPLE -->
+                <!-- Chrome -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardVideo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="#9B59B6"
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp">
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/bg_moun2" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#40000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="🎬"
-                            android:textSize="56sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Video"
-                            android:textSize="14sp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="24dp"
+                            android:text="Chrome"
+                            android:textSize="20sp"
                             android:textColor="#FFFFFF"
-                            android:textStyle="normal"
-                            android:layout_marginTop="12dp" />
+                            android:textStyle="bold"
+                            android:shadowColor="#000000"
+                            android:shadowDx="2"
+                            android:shadowDy="2"
+                            android:shadowRadius="4" />
 
-                    </LinearLayout>
+                    </FrameLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -247,28 +256,28 @@
 
         </LinearLayout>
 
-        <!-- ROW 2: Kiri (2 kecil) | Kanan (2 kecil) - LEBIH KECIL -->
+        <!-- ROW 2: Height 2.3x (LEBIH TINGGI SEDIKIT) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2.3"
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <!-- KIRI: 2 Cards Kecil (Games, Settings) -->
+            <!-- KIRI: Games + Settings -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <!-- Games - FLAT GREEN -->
+                <!-- Games -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardGames"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -276,39 +285,45 @@
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="12dp">
+                        android:layout_height="match_parent">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="🎮"
-                            android:textSize="48sp" />
+                            android:layout_centerInParent="true"
+                            android:orientation="horizontal"
+                            android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Games"
-                            android:textSize="13sp"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="normal"
-                            android:layout_marginTop="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🎮"
+                                android:textSize="32sp" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Games"
+                                android:textSize="16sp"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold"
+                                android:layout_marginStart="12dp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
-                <!-- Settings - FLAT ORANGE -->
+                <!-- Settings -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardSettings"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -316,48 +331,54 @@
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="12dp">
+                        android:layout_height="match_parent">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⚙️"
-                            android:textSize="48sp" />
+                            android:layout_centerInParent="true"
+                            android:orientation="horizontal"
+                            android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Settings"
-                            android:textSize="13sp"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="normal"
-                            android:layout_marginTop="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⚙️"
+                                android:textSize="32sp" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Settings"
+                                android:textSize="16sp"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold"
+                                android:layout_marginStart="12dp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-            <!-- KANAN: 2 Cards Kecil (All Apps, WiFi) -->
+            <!-- KANAN: All Apps + WiFi -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <!-- All Apps - FLAT DARK BLUE -->
+                <!-- All Apps -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardAllApps"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -365,39 +386,45 @@
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="12dp">
+                        android:layout_height="match_parent">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="📦"
-                            android:textSize="48sp" />
+                            android:layout_centerInParent="true"
+                            android:orientation="horizontal"
+                            android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="All Apps"
-                            android:textSize="13sp"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="normal"
-                            android:layout_marginTop="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📦"
+                                android:textSize="32sp" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="All Apps"
+                                android:textSize="16sp"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold"
+                                android:layout_marginStart="12dp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
-                <!-- WiFi - FLAT TEAL -->
+                <!-- File Manager -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardExtra"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_margin="4dp"
+                    android:layout_margin="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -405,29 +432,35 @@
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp">
 
-                    <LinearLayout
+                    <RelativeLayout 
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="12dp">
+                        android:layout_height="match_parent">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="📶"
-                            android:textSize="48sp" />
+                            android:layout_centerInParent="true"
+                            android:orientation="horizontal"
+                            android:gravity="center">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="WiFi"
-                            android:textSize="13sp"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="normal"
-                            android:layout_marginTop="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📁"
+                                android:textSize="32sp" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="File Manager"
+                                android:textSize="16sp"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold"
+                                android:layout_marginStart="12dp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -436,5 +469,18 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <!-- Footer Text (NEMPEL KE BOTTOM MONITOR - OUTSIDE CONTAINER) -->
+    <TextView
+        android:id="@+id/footerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Global Vision Intermedia"
+        android:textSize="14sp"
+        android:textColor="#70FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
 
 </RelativeLayout>
