@@ -21,6 +21,8 @@ class SplashActivity : AppCompatActivity() {
             or android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         )
         
+        supportActionBar?.hide() // Sembunyikan ActionBar
+        
         setContentView(R.layout.activity_splash)
 
         videoView = findViewById(R.id.splashVideo)
@@ -28,6 +30,31 @@ class SplashActivity : AppCompatActivity() {
         // Set video from raw folder
         val videoUri = Uri.parse("android.resource://$packageName/${R.raw.splash_video}")
         videoView.setVideoURI(videoUri)
+        
+        // Buat video fullscreen dengan scaling
+        videoView.setOnPreparedListener { mediaPlayer ->
+            // Set scaling mode untuk fullscreen
+            mediaPlayer.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
+            mediaPlayer.isLooping = false
+            
+            // Adjust aspect ratio untuk fullscreen
+            val videoWidth = mediaPlayer.videoWidth.toFloat()
+            val videoHeight = mediaPlayer.videoHeight.toFloat()
+            val screenWidth = resources.displayMetrics.widthPixels.toFloat()
+            val screenHeight = resources.displayMetrics.heightPixels.toFloat()
+            
+            val scaleX = screenWidth / videoWidth
+            val scaleY = screenHeight / videoHeight
+            val scale = maxOf(scaleX, scaleY)
+            
+            val scaledWidth = (videoWidth * scale).toInt()
+            val scaledHeight = (videoHeight * scale).toInt()
+            
+            videoView.layoutParams = videoView.layoutParams.apply {
+                width = scaledWidth
+                height = scaledHeight
+            }
+        }
         
         // Start video
         videoView.start()
@@ -49,7 +76,7 @@ class SplashActivity : AppCompatActivity() {
     private fun startHomeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
-        finish() // Close splash so user can't back to it
+        finish()
     }
     
     override fun onBackPressed() {
