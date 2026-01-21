@@ -35,12 +35,13 @@
         android:theme="@style/Theme.CustomLauncher"
         android:usesCleartextTraffic="false" >
 
-        <!-- HOME ACTIVITY - LAUNCHER UTAMA -->
+        <!-- SPLASH ACTIVITY - YANG PERTAMA MUNCUL -->
         <activity
-            android:name="com.example.customlauncher.HomeActivity"
+            android:name="com.example.customlauncher.SplashActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:stateNotNeeded="true" >
+            android:stateNotNeeded="true"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,6 +50,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- HOME ACTIVITY - LAUNCHER UTAMA (Dipanggil setelah splash) -->
+        <activity
+            android:name="com.example.customlauncher.HomeActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true" />
 
         <!-- MAIN ACTIVITY - LIST APPS -->
         <activity

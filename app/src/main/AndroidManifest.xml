@@ -20,12 +20,13 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="false">
         
-        <!-- HOME ACTIVITY - LAUNCHER UTAMA -->
+        <!-- SPLASH ACTIVITY - YANG PERTAMA MUNCUL -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:stateNotNeeded="true">
+            android:stateNotNeeded="true"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +36,13 @@
             </intent-filter>
             
         </activity>
+        
+        <!-- HOME ACTIVITY - LAUNCHER UTAMA (Dipanggil setelah splash) -->
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true" />
 
         <!-- MAIN ACTIVITY - LIST APPS -->
         <activity

@@ -16,6 +16,10 @@
         "source": "com.example.customlauncher.app-main-36:/drawable/app.png"
     },
     {
+        "merged": "com.example.customlauncher.app-merged_res-34:/layout_activity_splash.xml.flat",
+        "source": "com.example.customlauncher.app-main-36:/layout/activity_splash.xml"
+    },
+    {
         "merged": "com.example.customlauncher.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-36:/mipmap-xxxhdpi/ic_launcher.png"
     },
@@ -30,6 +34,10 @@
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/drawable_game.png.flat",
         "source": "com.example.customlauncher.app-main-36:/drawable/game.png"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-34:/raw_splash_video.mp4.flat",
+        "source": "com.example.customlauncher.app-main-36:/raw/splash_video.mp4"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/drawable_card_selector.xml.flat",
@@ -62,10 +70,6 @@
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/drawable_bg_moun1.jpg.flat",
         "source": "com.example.customlauncher.app-main-36:/drawable/bg_moun1.jpg"
-    },
-    {
-        "merged": "com.example.customlauncher.app-merged_res-34:/layout_activity_home_.xml.flat",
-        "source": "com.example.customlauncher.app-main-36:/layout/activity_home_.xml"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/drawable_background.png.flat",
