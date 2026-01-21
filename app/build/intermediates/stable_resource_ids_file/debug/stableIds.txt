@@ -1,3 +1,4 @@
+com.example.customlauncher:xml/network_security_config = 0x7f120000
 com.example.customlauncher:styleable/ViewTransition = 0x7f110098
 com.example.customlauncher:styleable/ViewPager2 = 0x7f110096
 com.example.customlauncher:styleable/Variant = 0x7f110093

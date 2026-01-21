@@ -176,15 +176,27 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun loadWifiIcon() {
-        // WiFi icon - White color
-        val wifiUrl = "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/wifi.svg"
+        android.util.Log.d("HomeActivity", "Loading WiFi icon...")
+        
+        // URL BARU yang benar
+        val wifiUrl = "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/wifi.svg"
         
         val request = ImageRequest.Builder(this)
             .data(wifiUrl)
+            .listener(
+                onStart = {
+                    android.util.Log.d("HomeActivity", "WiFi icon loading started")
+                },
+                onSuccess = { _, result ->
+                    android.util.Log.d("HomeActivity", "WiFi icon loaded successfully")
+                },
+                onError = { _, error ->
+                    android.util.Log.e("HomeActivity", "WiFi icon load failed: ${error.throwable.message}", error.throwable)
+                }
+            )
             .target(
                 onStart = {
-                    // Show placeholder while loading
-                    wifiIcon.setBackgroundColor(Color.RED) // Debug: show red background
+                    wifiIcon.setBackgroundColor(Color.RED)
                 },
                 onSuccess = { result ->
                     wifiIcon.setImageDrawable(result)
@@ -192,13 +204,42 @@ class HomeActivity : AppCompatActivity() {
                     wifiIcon.setBackgroundColor(Color.TRANSPARENT)
                 },
                 onError = {
-                    // Show error icon (emoji fallback)
-                    wifiIcon.setBackgroundColor(Color.YELLOW) // Debug: show yellow background
+                    wifiIcon.setBackgroundColor(Color.YELLOW)
                 }
             )
             .build()
         
         imageLoader.enqueue(request)
+    }
+
+    private fun updateWeatherIcon() {
+        try {
+            val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+            
+            val (iconUrl, color) = when {
+                hour in 6..11 -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sunrise.svg",
+                    Color.parseColor("#FDB813")
+                )
+                hour in 12..17 -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sun.svg",
+                    Color.parseColor("#FDB813")
+                )
+                hour in 18..19 -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/sunset.svg",
+                    Color.parseColor("#FF6B6B")
+                )
+                else -> Pair(
+                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/outline/moon.svg",
+                    Color.parseColor("#A8DADC")
+                )
+            }
+            
+            // sama seperti loadWifiIcon(), ganti URL
+            
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun updateClockAndStatus() {
@@ -219,56 +260,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-
-    private fun updateWeatherIcon() {
-        try {
-            val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-            
-            // Choose icon and color based on time of day
-            val (iconUrl, color) = when {
-                hour in 6..11 -> Pair(
-                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/sunrise.svg",
-                    Color.parseColor("#FDB813") // Orange sunrise
-                )
-                hour in 12..17 -> Pair(
-                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/sun.svg",
-                    Color.parseColor("#FDB813") // Yellow sun
-                )
-                hour in 18..19 -> Pair(
-                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/sunset.svg",
-                    Color.parseColor("#FF6B6B") // Red sunset
-                )
-                else -> Pair(
-                    "https://raw.githubusercontent.com/tabler/tabler-icons/master/icons/moon.svg",
-                    Color.parseColor("#A8DADC") // Light blue moon
-                )
-            }
-            
-            val request = ImageRequest.Builder(this)
-                .data(iconUrl)
-                .target(
-                    onStart = {
-                        // Show placeholder while loading
-                        weatherIcon.setBackgroundColor(Color.RED) // Debug: show red background
-                    },
-                    onSuccess = { result ->
-                        weatherIcon.setImageDrawable(result)
-                        weatherIcon.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-                        weatherIcon.setBackgroundColor(Color.TRANSPARENT)
-                    },
-                    onError = {
-                        // Show error icon
-                        weatherIcon.setBackgroundColor(Color.YELLOW) // Debug: show yellow background
-                    }
-                )
-                .build()
-            
-            imageLoader.enqueue(request)
-            
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
     }
 
     override fun onBackPressed() {

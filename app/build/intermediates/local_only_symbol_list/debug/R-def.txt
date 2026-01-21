@@ -39,3 +39,4 @@ layout item_app
 mipmap ic_launcher
 string app_name
 style Theme.CustomLauncher
+xml network_security_config
