@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 #Wed Jan 21 17:16:16 WIB 2026
 base.0=C\:\\laragon\\www\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\laragon\\www\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\laragon\\www\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
 base.3=C\:\\laragon\\www\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+=======
+#Wed Jan 21 16:51:08 WIB 2026
+base.0=C\:\\work\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\work\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\work\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+base.3=C\:\\work\\gvi-launcher\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+>>>>>>> af7807c242d1b422bd28229ef7728ed27d15b946
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=14/classes.dex

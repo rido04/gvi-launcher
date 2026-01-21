@@ -56,20 +56,20 @@
         "source": "com.example.customlauncher.app-main-36:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_bg_moun3.jpg.flat",
-        "source": "com.example.customlauncher.app-main-36:/drawable/bg_moun3.jpg"
-    },
-    {
-        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_bg_moun2.jpg.flat",
-        "source": "com.example.customlauncher.app-main-36:/drawable/bg_moun2.jpg"
+        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_bg_moun3.jpeg.flat",
+        "source": "com.example.customlauncher.app-main-36:/drawable/bg_moun3.jpeg"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/mipmap-mdpi_ic_launcher.png.flat",
         "source": "com.example.customlauncher.app-main-36:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_bg_moun1.jpg.flat",
-        "source": "com.example.customlauncher.app-main-36:/drawable/bg_moun1.jpg"
+        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_bg_moun1.png.flat",
+        "source": "com.example.customlauncher.app-main-36:/drawable/bg_moun1.png"
+    },
+    {
+        "merged": "com.example.customlauncher.app-merged_res-34:/drawable_bg_moun2.jpeg.flat",
+        "source": "com.example.customlauncher.app-main-36:/drawable/bg_moun2.jpeg"
     },
     {
         "merged": "com.example.customlauncher.app-merged_res-34:/drawable_background.png.flat",
