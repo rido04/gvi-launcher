@@ -6,12 +6,11 @@
     android:padding="12dp"
     android:gravity="center">
 
-    <!-- Icon container dengan background inline (tanpa drawable error) -->
+    <!-- Icon container TANPA background -->
     <FrameLayout
         android:id="@+id/iconContainer"
         android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="#30FFFFFF">
+        android:layout_height="80dp">
 
         <!-- Icon aplikasi -->
         <ImageView
