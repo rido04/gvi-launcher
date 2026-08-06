@@ -7,6 +7,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var wifiIcon: ImageView
     private lateinit var imageLoader: ImageLoader
     private val handler = Handler(Looper.getMainLooper())
+    private var attemptedBootPlayerLaunch = false
     
     // Cache Intent
     private val settingsIntent by lazy { Intent(android.provider.Settings.ACTION_SETTINGS) }
@@ -62,6 +64,8 @@ class HomeActivity : AppCompatActivity() {
 
         // Clock update
         updateClockAndStatus()
+
+        maybeLaunchSignagePlayerAfterBoot()
     }
 
     private fun setupCardClicks() {
@@ -222,6 +226,34 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun maybeLaunchSignagePlayerAfterBoot() {
+        if (attemptedBootPlayerLaunch) return
+        if (SystemClock.elapsedRealtime() > BOOT_AUTOSTART_WINDOW_MS) return
+
+        attemptedBootPlayerLaunch = true
+        android.util.Log.d(
+            "HomeActivity",
+            "Scheduling signage player launch after startup delay"
+        )
+        handler.postDelayed({
+            launchPackage(SIGNAGE_PLAYER_PACKAGE)
+        }, PLAYER_LAUNCH_DELAY_MS)
+    }
+
+    private fun launchPackage(packageName: String): Boolean {
+        return try {
+            val launchIntent = packageManager.getLaunchIntentForPackage(packageName)
+                ?: return false
+
+            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(launchIntent)
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
+
     private fun launchApp(packageName: String, fallbackUrl: String) {
         try {
             val intent = packageManager.getLaunchIntentForPackage(packageName)
@@ -319,5 +351,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacksAndMessages(null)
+    }
+
+    companion object {
+        private const val SIGNAGE_PLAYER_PACKAGE = "com.example.smart_signage"
+        private const val BOOT_AUTOSTART_WINDOW_MS = 180_000L
+        private const val PLAYER_LAUNCH_DELAY_MS = 30_000L
     }
 }
